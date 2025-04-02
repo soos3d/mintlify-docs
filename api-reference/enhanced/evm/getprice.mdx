@@ -1,0 +1,43 @@
+---
+title: "getPrice"
+description: Learn how to use the getPrice JSON-RPC method.
+openapi: "openapi-evm POST /#particle_getPrice"
+---
+
+## Contextualizing `getPrice`
+
+- `getPrice` returns an array of JSON objects containing real-time exchange rates, market cap, 24-hour changes, and volume for each specified token address in selected currencies (either `usd`, `cny`, or both at the moment).
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 42,
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'particle_getPrice',
+        params: [
+            [
+                'native', 
+                '0x7968bc6a03017eA2de509AAA816F163Db0f35148',
+            ],
+            [
+                'usd', 
+                'cny',
+            ],
+        ],
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        },
+    });
+
+    console.log(response.data);
+})();
+```

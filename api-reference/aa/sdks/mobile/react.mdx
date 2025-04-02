@@ -1,0 +1,206 @@
+---
+title: "React Native (JavaScript) - AA"
+description: "Leveraging Particle's AA SDK within React Native applications."
+---
+
+## React Native
+
+### 1. Add the Account Abstraction Service SDK to Your React Native App
+
+Run this command:
+
+```shell Terminal
+npm install @particle-network/rn-aa
+
+// Or
+
+yarn add @particle-network/rn-aa
+```
+
+Click [here](https://github.com/Particle-Network/particle-react-native/tree/master/particle-aa) to get the demo source code
+
+### 2. Add Particle Auth or Particle Connect to your project
+
+Account Abstraction service can't be used individually.
+
+<Note>
+Important details before initialization.
+<p></p>
+<p>Before initializing the SDK, there are a few key points to keep in mind, specifically regarding the utilization of Paymasters (to sponsor gas fees, pay for gas in ERC-20 tokens, etc.)</p>
+<p></p>
+<p>- All Testnets automatically have the Verifying Particle Network Omnichain Paymaster enabled. Transactions that request it will automatically be sponsored and thus gasless.</p>
+<p>- On the occasion that you'd like to use the Particle Network Omnichain Paymaster for Mainnets, you'll need to deposit USDT on either Ethereum or BNB Chain within the <a href="https://dashboard.particle.network">Particle dashboard</a>. This USDT will then automatically be converted as needed into the native token of the network you're requesting (and qualifying for) sponsorship on.</p>
+</Note>
+
+## Initialize the SDK
+
+The Particle Network AA SDK will fail to function correctly until it has been initialized. Initialization allows you to specify a smart account implementation and version, alongside the Paymaster you'd like to use. This can be initiated through `particleAA.init`, which takes the following parameters:
+
+- `accountName`, the smart account implementation to be used (any of these choices):
+  - `AccountName.BICONOMY_V1`, a [Biconomy smart account](https://www.biconomy.io/smart-accounts).
+  - `AccountName.BICONOMY_V2`, a [Biconomy smart account](https://www.biconomy.io/smart-accounts).
+  - `AccountName.CYBERCONNECT`, a [CyberConnect smart account](https://wallet.cyber.co/).
+  - `AccountName.SIMPLE_V1`, a [SimpleAccount implementation](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol).
+  - `AccountName.SIMPLE_V2`, a [SimpleAccount implementation](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol).
+  - `AccountName.LIGHT`, a [Light Account](https://accountkit.alchemy.com/smart-contracts/light-account).
+
+Once `init` has been called, you can close off initialization by enabling AA mode with `ParticleAA.enableAAMode`.
+
+```typeScript
+import * as particleAA from '@particle-network/rn-aa';
+import { AAVersion } from '@particle-network/rn-base';
+
+// Support BICONOMY_V1 | BICONOMY_V2 | CYBERCONNECT | SIMPLE_V1 | SIMPLE_V2 | LIGHT
+particleAA.init(AccountName.BICONOMY_V2());
+particleAA.enableAAMode();
+```
+
+---
+
+### Is Deployed
+
+Now that you've initialized the AA SDK, you can move onto several methods to utilize it. First, it's important to note that the smart account implementation you chose will be automatically deployed with the first transaction it initiates. The deployment transaction will be bundled (batched) in with the first transaction. 
+
+However, if you'd like to check the deployment status of a given smart account manually, you can first retrieve the host address with `evm.getAddress`, then pass that into `particleAA.isDeploy`, which returns a Boolean indicating deployment status.
+
+E.g.:
+
+```typeScript
+const eoaAddress = await evm.getAddress();
+const isDeploy = await particleAA.isDeploy(eoaAddress);
+```
+
+---
+
+### Disable AA Mode
+
+If you'd like to exit AA mode and thus disable account abstraction functionality within your application, you'll need to call `ParticleAA.disableAAMode`. This will immediately render the usage of AA incompatible. Additionally, if you're unsure whether or not AA mode is enabled, you can call `ParticleAA.isAAModeEnable`, which will return a Boolean representing this status. E.g.:
+
+```typeScript
+particleAA.disableAAMode();
+
+const result = await particleAA.isAAModeEnable();
+```
+
+---
+
+## RPC get fee quotes
+
+This is always used with `sendTransaction`. Select a `feeQuote`, and then send the transaction using the chosen custom fee mode.
+
+```typeScript
+const wholeFeeQuote = (await particleAA.rpcGetFeeQuotes(eoaAddress, [transaction])) as WholeFeeQuote;
+```
+
+### Send Transaction
+
+Sending a transaction (UserOperation) is as simple as calling pre-existing methods within `ParticleConnect` or `Evm` in `@particle-network/rn-auth-core` and just passing in an additional parameter, `feeMode`. 
+
+There are two ways to send transactions with the AA SDK: 
+
+The first is with `signAndSendTransaction` of `sendTransaction` , which will send a singular transaction to the network. Alternatively, you can use `batchSendTransactions` to send batched transactions within a single UserOperation.
+
+`particleConnect.signAndSendTransaction` or `Evm.sendTransaction` in `@particle-network/rn-auth-core` takes the following parameters:
+
+- For Particle Connect, `walletType`, dictates the specific adapter being used/targeted.
+- `account`, the public address of the smart account sending the transaction, which can be retrieved through `EvmService.getSmartAccount`.
+- `transaction`, a stringified standard transaction object.
+- `feeMode`, the mechanism to be used for paying gas fees, can be:
+  - `AAFeeMode.gasless`, for sponsored transactions. This will happen automatically for Testnets and will pull from your previously defined (or configured) Paymaster for Mainnets. Takes one parameter:
+    - `wholeFeeQuote`, which can be retrieved through `particleAA.rpcGetFeeQuotes`.
+  - `AAFeeMode.native`, paying for gas fees in a native token (such as ETH). Takes one parameter:
+    - `wholeFeeQuote`, which can be retrieved through `particleAA.rpcGetFeeQuotes`.
+  - `AAFeeMode.token`, paying for gas fees in an ERC-20 token (such as USDC). Takes one parameter:
+    - `feeQuote`, to be used when leveraging a Token Paymaster. It can be retrieved through `particleAA.rpcGetFeeQuotes`.
+    - `tokenPaymasterAddress`, can be  retrieved through `particleAA.rpcGetFeeQuotes`.
+
+Alternatively, for `particleConnect.batchSendTransactions` or ParticleAuthCore `Evm.batchSendTransactions`, the parameters will be the same, with the exception of `transaction` being an array of transactions.
+
+```typeScript
+// with @particle-network/rn-auth-core
+await evm.sendTransaction(transaction,
+        feeMode: AAFeeMode.gasless(result));
+
+await evm.sendTransaction(transactions,
+        feeMode: AAFeeMode.native(result));
+
+await evm.signAndSendTransaction(transaction,
+        feeMode: AAFeeMode.token(feeQuote, tokenPaymasterAddress));
+
+await evm.batchSendTransactions(transactions,
+        feeMode: AAFeeMode.native(result));
+
+// with @particle-network/rn-connect
+await ParticleConnect.signAndSendTransaction(
+        WalletType.AuthCore, eoaPublicAddress, transaction,
+        feeMode: AAFeeMode.gasless(result));
+
+await ParticleConnect.signAndSendTransaction(
+        WalletType.AuthCore, eoaPublicAddress, transaction,
+        feeMode: AAFeeMode.native(result));
+
+await ParticleConnect.signAndSendTransaction(
+        WalletType.AuthCore, eoaPublicAddress, transaction,
+        feeMode: AAFeeMode.token(feeQuote, tokenPaymasterAddress));
+
+await ParticleConnect.batchSendTransactions(
+        WalletType.AuthCore, eoaPublicAddress, transactions,
+        feeMode: AAFeeMode.native(result));
+```
+
+Check if you can send a transaction with AAFeeMode.gasless/native/token.
+
+```typeScript
+const wholeFeeQuote = await particleAA.rpcGetFeeQuotes(eoaAddress, [
+        transaction,
+      ]) as WholeFeeQuote;
+      
+const feeQuote = wholeFeeQuote.verifyingPaymasterNative['feeQuote'];
+const fee = BigNumber(feeQuote['fee']);
+const balance = BigNumber(feeQuote['balance']);
+
+// Check if user can afford te transaction
+if (balance.isLessThan(fee)) {
+  console.log("Native balance too low to pay for gas fees");
+  return;
+}
+
+// Check if the transaction can be sponsored
+const verifyingPaymasterGasless = wholeFeeQuote.verifyingPaymasterGasless;
+if (verifyingPaymasterGasless == undefined) {
+  console.log("Gasless mode is not available");
+  return;
+}
+
+// Check if the transaction can be paid for using ERC20 tokens
+ const feeQuotes = wholeFeeQuote.tokenPaymaster['feeQuotes'] as any[];
+
+const validFeeQuotes = feeQuotes.filter(item => {
+  const fee = BigNumber(item['fee']);
+  const balance = BigNumber(item['balance']);
+  if (balance.isLessThan(fee)) {
+    return false;
+  } else {
+    return true;
+  }
+});
+
+
+if (validFeeQuotes.length == 0) {
+  console.log("Token not valid to pay gas fees");
+  return;
+}
+
+// Select a fee quote.
+const feeQuote = validFeeQuotes[0];
+
+const tokenPaymasterAddress =
+        wholeFeeQuote.tokenPaymaster["tokenPaymasterAddress"] as string;
+
+```
+
+***
+
+## Dive Deeper
+
+See the [Particle Auth](/api-reference/auth/mobile-sdks/react) and [Particle Connect](/api-reference/connect/mobile/react) pages for insights into additional compatible methods (such as `signAndSendTransaction`), as shown here.

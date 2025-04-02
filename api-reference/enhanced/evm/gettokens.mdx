@@ -1,0 +1,36 @@
+---
+title: "getTokens"
+description: Learn how to use the getTokens JSON-RPC method.
+openapi: "openapi-evm POST /#particle_getTokens"
+---
+
+# Contextualizing `getTokens`
+
+- `getTokens`, as an alternative to `getTokensAndNFTs`, returns an object with detailed information regarding the various ERC-20 tokens owned by a given address. It takes:
+  - `Address` - string.
+  - `Token addresses` - (optional), an array of strings.
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 1,
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'particle_getTokens',
+        params: ['0x329a7f8b91Ce7479035cb1B5D62AB41845830Ce8'],
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

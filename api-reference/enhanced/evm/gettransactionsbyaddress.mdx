@@ -1,0 +1,34 @@
+---
+title: "getTransactionsByAddress"
+description: Learn how to use the getTransactionsByAddress JSON-RPC method.
+openapi: "openapi-evm POST /#particle_getTransactionsByAddress"
+---
+
+## Contextualizing `getTransactionsByAddress`
+
+- `getTransactionsByAddress` provides a detailed transaction history for a given address, including status and gas metrics. It returns all associated transactions, regardless of whether they're pending, successful, or failed, along with the relevant transaction details like gas spent and fees for confirmed transactions.
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 42,
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'particle_getTransactionsByAddress',
+        params: ['0x425249Cf0F2f91f488E24cF7B1AA3186748f7516'],
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

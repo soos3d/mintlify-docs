@@ -1,0 +1,36 @@
+---
+title: "getTokensAndNFTs"
+description: Learn how to use the getTokensAndNFTs JSON-RPC method.
+openapi: "openapi-evm POST /#particle_getTokensAndNFTs"
+---
+
+# Understanding `getTokensAndNFTs`
+
+- `getTokensAndNFTs` retrieves the ERC-20 and ERC-721 (NFTs) owned by a given account address. It takes:
+  - `Address` - string.
+  - `Token addresses` - (optional), an array of strings.
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 1,
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'particle_getTokensAndNFTs',
+        params: ['0x329a7f8b91Ce7479035cb1B5D62AB41845830Ce8'],
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

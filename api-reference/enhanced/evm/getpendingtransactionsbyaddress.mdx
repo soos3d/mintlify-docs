@@ -1,0 +1,34 @@
+---
+title: "getPendingTransactionsByAddress"
+description: Learn how to use the getPendingTransactionsByAddress JSON-RPC method.
+openapi: "openapi-evm POST /#particle_getPendingTransactionsByAddress"
+---
+
+## Contextualizing `getPendingTransactionsByAddress`
+
+- `getPendingTransactionsByAddress` fetches pending transactions for a specified address on a chain derived from `chainId`, offering detailed metrics like gas limits, transaction types, and statuses.
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 5,
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'particle_getPendingTransactionsByAddress',
+        params: ['0x425249Cf0F2f91f488E24cF7B1AA3186748f7516'],
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

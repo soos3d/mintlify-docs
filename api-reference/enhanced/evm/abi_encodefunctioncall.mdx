@@ -1,0 +1,41 @@
+---
+title: "abi_encodeFunctionCall"
+description: Learn how to use the abi_encodeFunctionCall JSON-RPC method.
+openapi: "openapi-evm POST /#particle_abi_encodeFunctionCall"
+---
+
+## Contextualizing `abi_encodeFunctionCall`
+
+- `abi_encodeFunctionCall` takes a contract address, a function name, and an array of function parameters to return an ABI-encoded string that represents the specific function call you intend to make on the smart contract.
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 1,
+        jsonrpc: '2.0',
+        id: 1,
+        method: "particle_abi_encodeFunctionCall",
+        params: [
+            "0xB8c77482e45F1F44dE1745F52C74426C631bDD52", 
+            "erc20_transfer", 
+            [
+                "0x329a7f8b91Ce7479035cb1B5D62AB41845830Ce8", 
+                "1000000000000000000"
+            ]
+        ]
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

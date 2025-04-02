@@ -1,0 +1,42 @@
+---
+title: "getContractAbi"
+description: Learn how to use the getContractAbi JSON-RPC method.
+openapi: "openapi-evm POST /#particle_abi_getContractAbi"
+---
+
+## Contextualizing `getContractAbi`
+
+- `getContractAbi` takes the address of a **verified** contract and returns the complete ABI. It **will return null** if the contract is not verified.
+
+<Tip>
+<p>If you're unsure whether a given contract is verified, Etherscan displays verification status on the **Contract** tab of smart contracts</p>
+Check it at: [https://etherscan.io/address/YOUR_CONTRACT_ADDRESS#code](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#code)
+</Tip>
+
+***
+
+## Query example
+
+```javascript JavaScript
+const axios = require('axios');
+
+(async () => {
+    const response = await axios.post('https://rpc.particle.network/evm-chain', {
+        chainId: 56,
+        jsonrpc: '2.0',
+        id: 1,
+        method: "particle_abi_getContractAbi",
+        params: [
+            "0x2170Ed0880ac9A755fd29B2688956BD959F933F8", 
+            true,
+        ]
+    }, {
+        auth: {
+            username: 'Your Project Id',
+            password: 'Your Project Server Key',
+        }
+    });
+
+    console.log(response.data);
+})();
+```

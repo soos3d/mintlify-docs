@@ -1,0 +1,275 @@
+---
+title: "iOS (Swift) - AA"
+description: "Leveraging Particle's AA SDK within iOS applications."
+---
+
+## Account Abstraction for iOS
+
+Particle Network's AA SDK, existing at the center of its Smart Wallet-as-a-Service, facilitates flexible end-to-end utilization of ERC-4337 account abstraction, natively supporting modular smart account implementations, Paymasters, and natural Bundler usage. Within iOS applications, the Particle Network AA SDK can be used (in tandem with Particle Auth or Particle Connect) to refine user experience through account abstraction.
+
+Details on configuration, initialization, and utilization **are listed below**.
+
+***
+
+## Getting Started
+
+To get started, you'll need to have already integrated either [Particle Connect](/api-reference/auth/mobile-sdks/ios) or [Particle Auth](/api-reference/connect/mobile/ios) within your iOS application. If you haven't, head over to those pages, follow the configuration process, and return here. Otherwise, you can begin by including `ParticleAA` within your Podfile, as shown below:
+
+```ruby Podfile
+pod 'ParticleAA'
+```
+
+This new addition to your Podfile can then be settled and installed by running the command below:
+
+```shell Terminal
+pod install --repo-update
+```
+
+<Note>
+Important details before initialization
+<p></p>
+<p>Before initializing the SDK, there are a few points to keep in mind, specifically regarding the utilization of Paymasters (to sponsor gas fees, pay for gas in ERC-20 tokens, etc.)</p>
+<p></p>
+<p>- All Testnets automatically have the Verifying Particle Network Omnichain Verifying Paymaster enabled. Transactions requesting it will automatically be sponsored and thus gasless.</p>
+<p>- On the occasion that you'd like to use the Particle Network Omnichain Verifying Paymaster for Mainnets, you'll need to deposit USDT on either Ethereum or BNB Chain within the <a href="https://dashboard.particle.network">Particle dashboard</a>. This USDT will then automatically be converted as needed into the native token of the network you're requesting (and qualifying for) sponsorship on.</p>
+<p>- The Particle Network AA SDK automatically uses Biconomy's Token Paymaster; transactions that request it will be able to leverage it without additional configuration.</p>
+</Note>
+
+***
+
+## Initialization
+
+To begin, before using the SDK, you'll need to initialize it; without this, the `setAAService` within `ParticleNetwork` will fail or raise issues down the line. 
+
+You can initialize the SDK through `AAService.initialize`, which requires the following parameters:
+
+- `name`, the name of the smart account implementation to be used, the choices here are:
+  - `.biconomyV1`, a [Biconomy smart account](https://www.biconomy.io/smart-accounts).
+  - `.biconomyV2`, a [Biconomy smart account](https://www.biconomy.io/smart-accounts).
+  - `.cyberConnect`, a [CyberConnect smart account](https://wallet.cyber.co/).
+  - `.simpleV1`, a [SimpleAccount implementation](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol).
+  - `.simpleV2`, a [SimpleAccount implementation](https://github.com/eth-infinitism/account-abstraction/blob/develop/contracts/samples/SimpleAccount.sol).
+  - `.light`, a [Light Account](https://accountkit.alchemy.com/smart-contracts/light-account).
+
+Once `AAService.initialize` has been called, you'll need to use `ParticleNetwork.setAAService`, passing in an instance of `AAService`. This will tell Particle Auth to use your smart account rather than your EOA. Either before or after doing this, you'll also need to call `aaService.enableAAMode`.
+
+```swift
+AAService.initialize(name: .biconomyV1)
+
+let aaService = AAService()
+aaService.enableAAMode()
+
+ParticleNetwork.setAAService(aaService)
+```
+
+## Examples of Utilization
+
+### Disable AA Mode
+
+If you'd like to disable AA mode (stop using account abstraction) after enabling it during the initialization process (through `enableAAMode`), then you'll need to call `aaService.disableAAMode`, with `aaService` being an instance of `AAService`.
+
+However, if you aren't sure whether AA mode is enabled or not, you can call `aaService.isAAModeEnable`, which returns a Boolean representing this status.
+
+E.g.:
+
+```swift
+aaService.disableAAMode() 
+
+let isEnable = aayService.isAAModeEnable()
+```
+
+### Get Smart Account
+
+You can also retrieve the address of the smart account, among other details, by calling the `getSmartAccount` method on `aaService` (which can be defined by `ParticleNetwork.getAAService` if needed), in which you can pass `by` (your Signer/owner address, which should be an EOA), and `chainInfo`, which should be a `ChainInfo` object representing the chain on which you're querying account information. E.g.:
+
+| Field  | Type   | Description                                                                                              |
+|--------|--------|----------------------------------------------------------------------------------------------------------|
+| `publicAddress` | `String` | EOA address.   |
+| `chainInfo`| `ChainInfo?`| (Optional) default is current chainInfo.|
+
+
+```swift
+let smartAccount = try await aaService.getSmartAccount(by: eoaAddress, chainInfo: chainInfo).value
+```
+
+### Send Transaction
+
+Sending a transaction (UserOperation) is also quite simple, primarily just deviating in the fee mechanism being used for it. There are three ways to send transactions with the AA SDK:
+
+The `auth.evm.sendTransaction` method, defined in `ParticleAuthCore`, is used to send a single transaction to the network.
+
+The `adapter.signAndSendTransaction` method, defined in `ConnectAdapter`, is used to send a single transaction to the network.
+
+The `aaService.quickSendTransactions` method, defined in `ParticleAA`, is used to send batched transactions within a single UserOperation.
+
+`auth.evm.sendTransaction` takes the following parameters:
+
+- `transaction`, a stringified standard transaction object.
+- `feeMode`, the mechanism to be used for paying gas fees, can be:
+  - `.gasless`, for sponsored transactions; this will happen automatically for Testnets, and will pull from your previously defined (or configured) Paymaster for Mainnets.
+  - `.native`, paying for gas fees in a native token (such as ETH).
+  - `.token`, paying for gas fees in an ERC-20 token (such as USDC), and thus takes one parameter:
+    - `feeQuote`, to be used when leveraging a Token Paymaster.
+- Optionally, `chainInfo`: a `ChainInfo` object representing the chain on which this transaction will be executed.
+
+`adapter.signAndSendTransaction` takes the following parameters:
+- `publicAddress`, the connected public address, if `adapter.WalletType` is `.authCore`, you can pass an empty string, for other walletTypes, you need pass a connected public address. 
+- `transaction`, a stringified standard transaction object.
+- `feeMode`, the mechanism to be used for paying gas fees, can be:
+  - `.gasless`, for sponsored transactions; this will happen automatically for Testnets, and will pull from your previously defined (or configured) Paymaster for Mainnets.
+  - `.native`, paying for gas fees in a native token (such as ETH).
+  - `.token`, paying for gas fees in an ERC-20 token (such as USDC), and thus takes one parameter:
+    - `feeQuote`, to be used when leveraging a Token Paymaster.
+- Optionally, `chainInfo`: a `ChainInfo` object representing the chain on which this transaction will be executed.
+
+
+Alternatively, for `aaService.quickSendTransactions`, the parameters will be the same with the following exceptions:
+
+- `transactions` being an array of transactions.
+- `feeMode` is same with upon.
+- `messageSigner`, which is the Signer/owner authenticating the transaction.
+- `wholeFeeQuote`, which for each `feeMode` should be passed with a complete fee quote object.
+- Optionally, `chainInfo` is same with upon.
+
+E.g.:
+
+```swift
+// Gasless
+let txHash = try await auth.evm.sendTransacton(transaction, feeMode: .gasless, chainInfo: chainInfo)
+
+let txHash =  try await aaService.quickSendTransactions([transaction], feeMode: .gasless, messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+
+// Native
+let txHash = try await auth.evm.sendTransacton(transaction, feeMode: .native, chainInfo: chainInfo) 
+
+let txHash = try await aaService.quickSendTransactions([transaction], feeMode: .native, messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+
+// ERC-20 Token
+let txHash = try await auth.evm.sendTransacton(transaction, feeMode: .token(feeQuote), chainInfo: chainInfo)
+
+let txHash = try await aaService.quickSendTransactions([transaction], feeMode: .token(feeQuote), messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+```
+
+Implement MessageSigner protocol
+
+```swift
+class YourViewController {
+  var publicAddress: String = ""
+}
+
+extension YourViewController: MessageSigner {
+    func signMessage(_ message: String, chainInfo: ParticleNetworkBase.ParticleNetwork.ChainInfo?) -> RxSwift.Single<String> {
+        // If you are using ParticleAuthService
+        return Single<String>.fromAsync { [weak self] in
+            guard let self = self else { throw ParticleNetwork.ResponseError(code: nil, message: "self is nil") }
+            return try await self.evm.personalSign(message, chainInfo: chainInfo)
+        }
+        
+        // If you are using ParticleConnectService
+        // Get current adapter by walletType and publicAddress
+        // Here we assume currentWalletType is Metamask
+        
+        let currentWalletType = WalletType.metaMask
+        let adapters = ParticleConnect.getAllAdapters().filter {
+            $0.walletType == currentWalletType
+        }
+        if let adapter = adapters.first {
+            return adapter.signMessage(publicAddress: self.publicAddress, message: message)
+        } else {
+            return .error(NSError(domain: "", code: 0))
+        }
+    }
+    
+    func getEoaAddress() -> String {
+        // If you are using ParticleAuthCore
+        return auth.evm.getAddress() ?? ""
+        
+        // If you are using ParticleConnectService
+        return self.publicAddress
+    }
+}
+// Add this single extension to support converting rxswift function to combine function
+extension Single {
+    static func fromAsync<T>(_ fn: @escaping () async throws -> T) -> Single<T> {
+        .create { observer in
+            let task = Task {
+                do { try await observer(.success(fn())) }
+                catch { observer(.failure(error)) }
+            }
+            return Disposables.create { task.cancel() }
+        }.observe(on: MainScheduler.instance)
+    }
+}
+```
+
+Check if you can send gasless/native/token.
+
+```swift
+extension YourViewController {
+    func sendTransactionInAA() async throws {
+        let aa = ParticleNetwork.getAAService()!
+                
+        let chainInfo = ParticleNetwork.getChainInfo()
+        let eoaAddress = ""
+        let transaction = ""
+        let wholeFeeQuote = try await aa.rpcGetFeeQuotes(eoaAddress: eoaAddress, transactions: [transaction], chainInfo: chainInfo).value
+            
+        if wholeFeeQuote.gasless != nil {
+            // There are two ways to sponsor transactions
+            // 1, call adapter or ParticleAuthService, requires one transaction
+            let txHash1 = try await auth.evm.sendTransaction(transaction, feeMode: .gasless, chainInfo: chainInfo)
+            // 2, call AA, supports batched transactions, requires implementation of MessageSigner delegate.
+            let txHash2 = try await aa.quickSendTransactions([transaction], feeMode: .gasless, messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+        } else {
+            // Gasless wouldn't be possible in this condition.
+        }
+            
+        let nativeFeeQuote = AA.FeeQuote(json: wholeFeeQuote.native.feeQuote, tokenPaymasterAddress: nil)
+        if nativeFeeQuote.isEnoughForPay {
+            // There are two ways to send, pay token
+            // 1, call adapter or ParticleAuthService, requires one transaction
+            let txHash1 = try await auth.evm.signAndSendTransaction(transaction, feeMode: .native, chainInfo: chainInfo)
+            // 2, call AA, supports batched transactions, requires implementation of MessageSigner delegate.
+            let txHash2 = try await aa.quickSendTransactions([transaction], feeMode: .native, messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+        } else {
+            // User can't afford transaction
+        }
+
+        if let token = wholeFeeQuote.token {
+            let tokenPaymasterAddress = token.tokenPaymasterAddress
+            let tokenFeeQuotes = token.feeQuotes.map {
+                AA.FeeQuote(json: $0, tokenPaymasterAddress: tokenPaymasterAddress)
+            }.filter {
+                // Filter out balance >= fee
+                $0.isEnoughForPay
+            }
+            if tokenFeeQuotes.count > 0 {
+                // Select a feeQuote, here we select the first one.
+                let feeQuote = tokenFeeQuotes[0]
+                // There are two ways to send, pay token
+                // 1, call adapter or ParticleAuthService, requires one transaction
+                let txHash1 = try await auth.evm.signAndSendTransaction(transaction, feeMode: .token(feeQuote), chainInfo: chainInfo)
+                // 2, call AA, supports batched transactions, requires implementation of MessageSigner delegate.
+                let txHash2 = try await aa.quickSendTransactions([transaction], feeMode: .token(feeQuote), messageSigner: self, wholeFeeQuote: wholeFeeQuote, chainInfo: chainInfo).value
+            } else {
+                // You can't select a token to pay
+            }
+        }
+    }
+}
+```
+
+### Manually Deploy Smart Account
+
+An undeployed smart account will automatically be deployed upon the ***first transaction*** (UserOperation) it sends through the SDK (the deployment transaction is bundled/batched with the other). If you'd like to initiate deployment manually, bypassing automatic deployment, then you can use `aaService.deployWalletContract`, which will create, request signature for, and send a deployment transaction. This method requires `messageSigner` (the Signer of the transaction), and the `feeMode` of the deployment transaction. 
+
+The status of deployment can be retrieved with `smartAccount.isDeploy`, which takes an owner/Signer `eoaAddress`.
+
+E.g.:
+
+```swift
+let isDeploy = try await aaService.isDeploy(eoaAddress: eoaAddress).value
+
+aaService.deployWalletContract(messageSigner: signer, feeMode: .gasless)
+```
+
