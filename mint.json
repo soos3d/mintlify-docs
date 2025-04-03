@@ -101,32 +101,33 @@
     {
       "group": "OVERVIEW",
       "pages": [
-        "landing/introduction",
-        "landing/what-is-particle-network"
+        "intro/introduction",
+        "intro/what-is-particle-network",
+        "intro/what-is-cha"
       ]
     },
     {
       "group": "CHAIN ABSTRACTION",
       "pages": [
-        "landing/modular-l1/universal-accounts",
-        "landing/modular-l1/universal-liquidity",
-        "landing/modular-l1/universal-gas"
+        "intro/universal-accounts",
+        "intro/universal-liquidity",
+        "intro/universal-gas"
       ]
     },
     {
       "group": "USER ONBOARDING",
       "pages": [
-        "landing/wallet-abstraction/waas/overview",
+        "intro/wallet-abstraction/waas/overview",
         {
           "group": "Account Abstraction",
           "pages": [
-            "landing/wallet-abstraction/waas/bundler",
-            "landing/wallet-abstraction/waas/omni-paymaster",
-            "landing/wallet-abstraction/btc-connect"
+            "intro/wallet-abstraction/waas/bundler",
+            "intro/wallet-abstraction/waas/omni-paymaster",
+            "intro/wallet-abstraction/btc-connect"
           ]
         } ,
-        "landing/wallet-abstraction/waas/differentiators",
-        "landing/wallet-abstraction/waas/mpc-tss"
+        "intro/wallet-abstraction/waas/differentiators",
+        "intro/wallet-abstraction/waas/mpc-tss"
       ]
       
     },
@@ -134,16 +135,16 @@
     {
       "group": "MORE RESOURCES",
       "pages": [
-        "landing/more/audits",
-        "landing/more/assets"
+        "intro/more/audits",
+        "intro/more/assets"
       ]
     },
     {
       "group": "LEGAL",
       "pages": [
-        "landing/tos/license-agreement",
-        "landing/tos/privacy-policy",
-        "landing/tos/terms-of-use"
+        "intro/tos/license-agreement",
+        "intro/tos/privacy-policy",
+        "intro/tos/terms-of-use"
       ]
     },
     {
@@ -523,59 +524,59 @@
   "redirects": [
     {
       "source": "/docs/what-is-particle-network",
-      "destination": "/landing/what-is-particle-network"
+      "destination": "/intro/what-is-particle-network"
     },
     {
       "source": "/docs/particle-vision-and-ecosystem",
-      "destination": "/landing/realized-vision"
+      "destination": "/intro/realized-vision"
     },
     {
       "source": "/docs/particle-chain",
-      "destination": "/landing/modular-l1/introduction"
+      "destination": "/intro/intro/introduction"
     },
     {
       "source": "/docs/universal-accounts",
-      "destination": "/landing/modular-l1/universal-accounts"
+      "destination": "/intro/intro/universal-accounts"
     },
     {
       "source": "/docs/universal-liquidity",
-      "destination": "/landing/modular-l1/universal-liquidity"
+      "destination": "/intro/intro/universal-liquidity"
     },
     {
       "source": "/docs/universal-gas",
-      "destination": "/landing/modular-l1/universal-gas"
+      "destination": "/intro/intro/universal-gas"
     },
     {
       "source": "/docs/btc-connect",
-      "destination": "/landing/wallet-abstraction/btc-connect"
+      "destination": "/intro/wallet-abstraction/btc-connect"
     },
     {
       "source": "/docs/security-mpc-tss",
-      "destination": "/landing/wallet-abstraction/waas/mpc-tss"
+      "destination": "/intro/wallet-abstraction/waas/mpc-tss"
     },
     {
       "source": "/docs/modular-smart-waas",
-      "destination": "/landing/wallet-abstraction/waas/overview"
+      "destination": "/intro/wallet-abstraction/waas/overview"
     },
     {
       "source": "/docs/particle-bundler",
-      "destination": "/landing/wallet-abstraction/waas/bundler"
+      "destination": "/intro/wallet-abstraction/waas/bundler"
     },
     {
       "source": "/docs/omnichain-paymaster",
-      "destination": "/landing/wallet-abstraction/waas/omni-paymaster"
+      "destination": "/intro/wallet-abstraction/waas/omni-paymaster"
     },
     {
       "source": "/docs/particle-vs-alternatives",
-      "destination": "/landing/wallet-abstraction/waas/differentiators"
+      "destination": "/intro/wallet-abstraction/waas/differentiators"
     },
     {
       "source": "/docs/security-audits",
-      "destination": "/landing/more/audits"
+      "destination": "/intro/more/audits"
     },
     {
       "source": "/docs/brand-assets",
-      "destination": "/landing/more/assets"
+      "destination": "/intro/more/assets"
     },
     {
       "source": "/docs/network-coverage",
@@ -779,15 +780,15 @@
     },
     {
       "source": "/resources/terms-and-conditions/privacy-policy",
-      "destination": "/landing/tos/privacy-policy"
+      "destination": "/intro/tos/privacy-policy"
     },
     {
       "source": "/resources/terms-and-conditions/terms-of-use",
-      "destination": "/landing/tos/terms-of-use"
+      "destination": "/intro/tos/terms-of-use"
     },
     {
       "source": "/resources/terms-and-conditions/api-and-sdk-license-agreement",
-      "destination": "/landing/tos/license-agreement"
+      "destination": "/intro/tos/license-agreement"
     }
   ]
 }
