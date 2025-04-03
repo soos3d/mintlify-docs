@@ -102,14 +102,12 @@
       "group": "OVERVIEW",
       "pages": [
         "landing/introduction",
-        "landing/what-is-particle-network",
-        "landing/realized-vision"
+        "landing/what-is-particle-network"
       ]
     },
     {
       "group": "CHAIN ABSTRACTION",
       "pages": [
-        "landing/modular-l1/introduction",
         "landing/modular-l1/universal-accounts",
         "landing/modular-l1/universal-liquidity",
         "landing/modular-l1/universal-gas"
@@ -136,10 +134,7 @@
       "group": "MORE RESOURCES",
       "pages": [
         "landing/more/audits",
-        "landing/more/assets",
-        "landing/tutorials-and-demos/list",
-        "landing/tutorials-and-demos/repositories",
-        "landing/tutorials-and-demos/videos"
+        "landing/more/assets"
       ]
     },
     {
