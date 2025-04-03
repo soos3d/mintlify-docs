@@ -50,7 +50,7 @@
   },
   "tabs": [
     {
-      "name": "Universal Accounts Guides",
+      "name": "Universal Accounts",
       "url": "ua-guides"
     },
     {
@@ -58,7 +58,7 @@
       "url": "ua-api-reference"
     },
     {
-      "name": "Onboarding Guides",
+      "name": "Onboarding Tools",
       "url": "guides"
     },
     {
@@ -117,19 +117,20 @@
       "group": "USER ONBOARDING",
       "pages": [
         "landing/wallet-abstraction/waas/overview",
+        {
+          "group": "Account Abstraction",
+          "pages": [
+            "landing/wallet-abstraction/waas/bundler",
+            "landing/wallet-abstraction/waas/omni-paymaster",
+            "landing/wallet-abstraction/btc-connect"
+          ]
+        } ,
         "landing/wallet-abstraction/waas/differentiators",
         "landing/wallet-abstraction/waas/mpc-tss"
       ]
+      
     },
-    {
-      "group": "ACCOUNT ABSTRACTION",
-      "pages": [
-        "landing/wallet-abstraction/waas/overview",
-        "landing/wallet-abstraction/waas/bundler",
-        "landing/wallet-abstraction/waas/omni-paymaster",
-        "landing/wallet-abstraction/btc-connect"
-      ]
-    },
+
     {
       "group": "MORE RESOURCES",
       "pages": [
