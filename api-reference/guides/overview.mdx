@@ -7,44 +7,87 @@ description: "Find resources to guide you through the onboarding SDKs."
 <img src="https://static.particle.network/mintlify/images/06.gif" alt="An overview of Particle Network's SDKs." style={{ width: '100%', maxWidth: '600px' }} />
 </Frame>
 
-### Quickstart: Wallet Abstraction
+## Particle's Onboarding SDKs
 
-The **Quickstart: Wallet Abstraction** section offers a streamlined introduction to implementing Wallet Abstraction, such as Wallet-as-a-Service and Account Abstraction, in your applications.
+Particle offers a suite of SDKs to simplify onboarding through **Wallet Abstraction** and **Account Abstraction**. These tools help developers embed secure smart wallets, enable social logins, and manage smart accounts—all from a unified, customizable interface.
 
-<CardGroup cols={3}>
-  <Card title="Dashboard" icon="table-columns" href="/guides/dashboard">
-    Overview of Particle Network's dashboard, its configuration, and feature set.
+## Quickstarts
+
+Particle Connect allows you to implement social logins and account abstraction into your dApp with a single SDK, while Particle Auth provides a flexible package for integrating social logins and account abstraction into dApps.
+
+<CardGroup cols={1}>
+  <Card title="Particle Connect Web Quickstart" icon="wallet" href="../guides/wallet-as-a-service/waas/connect/web-quickstart">
+    Explore how to implement Particle Connect into your web application in 5 minutes. 
   </Card>
-  <Card title="Wallet-as-a-Service" icon="wallet" href="/guides/wallet-as-a-service/waas/understanding-waas">
-    Implementing Particle Network's Wallet-as-a-Service on Desktop or Mobile.
-  </Card>
-  <Card title="Account Abstraction" icon="money-check-dollar" href="/guides/aa/web-aa">
-    Utilization of Particle Network's Account Abstraction stack.
-  </Card>
-  <Card title="Connection Kits" icon="plug" href="/guides/wallet-as-a-service/connection-kits">
-    Using Particle Network's Wallet-as-a-Service within external connection kits.
-  </Card>
-  <Card title="Customization" icon="paintbrush" href="/guides/configuration">
-    Customizing the login and embedded wallet modals.
+  <Card title="Particle Auth Web Quickstart" icon="money-check-dollar" href="../guides/wallet-as-a-service/waas/auth/web-quickstart">
+    Learn how to implement Particle Auth into your web application.
   </Card>
 </CardGroup>
 
-### Understanding Wallet Abstraction
+The **AA SDK** allows you to add **Account Abstraction** funcionalities to **Particle Auth**, or to use any **EIP-1193** provider.
+
+
+    <Card title="Account Abstraction Quickstart" icon="money-check-dollar" href="../guides/wallet-as-a-service/waas/auth/web-quickstart">
+    Get started with the Account Abstraction SDK.
+  </Card>
+
+## SDKs Reference
+
+Find the full reference for each SDK below.
+
+<Card title="Particle Connect" icon="wallet" href="/api-reference/connect/introduction">
+  Full Particle Connect SDK reference.
+</Card>
+
+<Card title="Particle Auth" icon="money-check-dollar" href="/api-reference/auth/introduction">
+  Full Particle Auth SDK reference.
+</Card>
+
+<Card title="AA SDK" icon="money-check-dollar" href="/api-reference/aa/introduction">
+  Full Account Abstraction SDK reference.
+</Card>
+
+## APIs Reference
+
+Find the full reference for each API below.
+
+<Card title="Server API" icon="wallet" href="/api-reference/auth/server/getuserinfo">
+  Backend API from Particle Auth.
+</Card>
+
+<Card title="Account Abstraction APIs" icon="money-check-dollar" href="/api-reference/aa/rpc/getsmartaccount">
+  Full Account Abstraction API reference.
+</Card>
+<Card title="BTC Connect APIs" icon="money-check-dollar" href="/api-reference/btc/rpc/getbtcaccount">
+  BTC Connect API reference.
+</Card>
+<Card title="Enhanced RPC" icon="money-check-dollar" href="/api-reference/enhanced/evm/abi_encodefunctioncall">
+  Enhanced RPC API reference.
+</Card>
+
+
+## Understanding Wallet Abstraction
 
 The **Understanding Wallet Abstraction** section dives into and explains the intricacies of Particle Network's Wallet Abstraction stack.
 
 <CardGroup cols={3}>
-  <Card title="Wallet-as-a-Service" icon="wallet" href="/guides/integrations/waas/auth">
-    Exploration of Particle Auth, Particle Connect, and Particle Wallet.
+  <Card title="Dashboard" icon="table-columns" href="./dashboard">
+    Overview of Particle Network's dashboard, its configuration, and feature set.
   </Card>
-  <Card title="Account Abstraction" icon="money-check-dollar" href="/guides/integrations/aa/bundler">
-    Deep dive into Particle Network's Bundler, Paymaster, and session key infrastructure.
-  </Card>
-  <Card title="Platform Coverage" icon="map" href="/guides/integrations/platform/web">
+    <Card title="Platform Coverage" icon="map" href="../guides/integrations/platform/web">
     Aggregation of integration guides across each supported platform.
   </Card>
-
-</CardGroup>
-  <Card title="Building with Particle's Partners" icon="handshake" href="/guides/integrations/partners/zetachain">
-    Tutorials written alongside partners showcasing external intergations and implementations of Particle Network's Wallet-as-a-Service.
+  <Card title="Wallet Abstraction" icon="wallet" href="../guides/wallet-as-a-service/waas/understanding-waas">
+    Implementing Particle Network's Wallet Abstraction on Desktop or Mobile.
   </Card>
+  <Card title="Account Abstraction" icon="money-check-dollar" href="../guides/aa/web-aa">
+    Utilization of Particle Network's Account Abstraction stack.
+  </Card>
+  <Card title="Connection Kits" icon="plug" href="../guides/wallet-as-a-service/connection-kits">
+    Using Particle Network's Wallet Abstraction within external connection kits.
+  </Card>
+  <Card title="Customization" icon="paintbrush" href="../guides/configuration">
+    Customizing the login and embedded wallet modals.
+  </Card>
+</CardGroup>
+

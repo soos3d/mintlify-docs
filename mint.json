@@ -188,27 +188,7 @@
             "pages": [
               "api-reference/guides/overview",
               "api-reference/guides/network-coverage",
-              {
-                "group": "Platform Coverage",
-                "pages": [
-                  "api-reference/guides/integrations/platform/web",
-                  "api-reference/guides/integrations/platform/android",
-                  "api-reference/guides/integrations/platform/ios",
-                  "api-reference/guides/integrations/platform/unity",
-                  "api-reference/guides/integrations/platform/unreal",
-                  "api-reference/guides/integrations/platform/cocos",
-                  "api-reference/guides/integrations/platform/flutter",
-                  "api-reference/guides/integrations/platform/react"
-                ]
-              },
-              {
-                "group": "SDKs Overview",
-                "pages": [
-                  "api-reference/guides/wallet-as-a-service/waas/understanding-waas",
-                  "api-reference/guides/integrations/waas/connect",
-                  "api-reference/guides/integrations/waas/auth"
-                ]
-              },
+              "api-reference/guides/dashboard",
               {
                 "group": "Quickstarts",
                 "pages": [
@@ -226,13 +206,18 @@
                 ]
               },
               {
-                "group": "Connection Kits",
+                "group": "Platform Coverage",
                 "pages": [
-                  "api-reference/guides/wallet-as-a-service/connection-kits/rainbow",
-                  "api-reference/guides/wallet-as-a-service/connection-kits/web3modal",
-                  "api-reference/guides/wallet-as-a-service/connection-kits/web3-onboard"
+                  "api-reference/guides/integrations/platform/web",
+                  "api-reference/guides/integrations/platform/android",
+                  "api-reference/guides/integrations/platform/ios",
+                  "api-reference/guides/integrations/platform/unity",
+                  "api-reference/guides/integrations/platform/unreal",
+                  "api-reference/guides/integrations/platform/cocos",
+                  "api-reference/guides/integrations/platform/flutter",
+                  "api-reference/guides/integrations/platform/react"
                 ]
-              },
+              },   
               {
                 "group": "Configuration",
                 "pages": [
