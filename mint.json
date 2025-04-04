@@ -29,10 +29,6 @@
   },
   "topbarLinks": [
     {
-      "name": "Demo",
-      "url": "https://demo.particle.network/"
-    },
-    {
       "name": "Blog",
       "url": "https://blog.particle.network/"
     },
@@ -54,7 +50,7 @@
       "url": "universal-accounts"
     },
     {
-      "name": "Onboarding SDKs",
+      "name": "Onboarding",
       "url": "api-reference"
     },
     {
@@ -77,11 +73,6 @@
       "name": "GitHub",
       "icon": "github",
       "url": "https://github.com/Particle-Network"
-    },
-    {
-      "name": "Demo",
-      "icon": "window",
-      "url": "https://demo.particle.network/"
     }
   ],
   "navigation": [
@@ -135,7 +126,7 @@
       ]
     },
     {
-"group": "CHAIN ABSTRACTION",
+      "group": "OVERVIEW",
       "pages": [
         "universal-accounts/cha/overview",
         "universal-accounts/cha/chains",
@@ -184,27 +175,11 @@
     
     
           {
-            "group": "USER ONBOARDING",
+            "group": "OVERVIEW",
             "pages": [
               "api-reference/guides/overview",
               "api-reference/guides/network-coverage",
               "api-reference/guides/dashboard",
-              {
-                "group": "Quickstarts",
-                "pages": [
-                  "api-reference/guides/wallet-as-a-service/waas/connect/web-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/connect/ios-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/connect/android-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/connect/flutter-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/connect/react-native-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/web-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/tg-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/ios-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/android-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/flutter-quickstart",
-                  "api-reference/guides/wallet-as-a-service/waas/auth/react-native-quickstart"
-                ]
-              },
               {
                 "group": "Platform Coverage",
                 "pages": [
@@ -268,6 +243,16 @@
       "pages": [
         "api-reference/connect/introduction",
         {
+          "group": "Quickstart",
+          "pages": [
+            "api-reference/guides/wallet-as-a-service/waas/connect/web-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/connect/ios-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/connect/android-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/connect/flutter-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/connect/react-native-quickstart"
+          ]
+        },
+        {
           "group": "SDKs (Desktop)",
           "pages": [
             "api-reference/connect/desktop/web"
@@ -290,6 +275,17 @@
       "group": "PARTICLE AUTH",
       "pages": [
         "api-reference/auth/introduction",
+        {
+          "group": "Quickstart",
+          "pages": [
+            "api-reference/guides/wallet-as-a-service/waas/auth/web-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/auth/tg-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/auth/ios-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/auth/android-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/auth/flutter-quickstart",
+            "api-reference/guides/wallet-as-a-service/waas/auth/react-native-quickstart"
+          ]
+        },
         {
           "group": "Server API",
           "pages": [
@@ -421,7 +417,7 @@
       ]
     },
     {
-      "group": "EHNANCED",
+      "group": "EHNANCED RPC",
       "pages": [
         "api-reference/enhanced/introduction",
         {
