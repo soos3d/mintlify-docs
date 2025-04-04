@@ -46,23 +46,15 @@
     }
   ],
   "primaryTab": {
-    "name": "Introduction"
+    "name": "What is Particle Network?"
   },
   "tabs": [
     {
-      "name": "Universal Accounts",
-      "url": "ua-guides"
-    },
-    {
-      "name": "Universal Accounts SDK",
-      "url": "ua-api-reference"
-    },
-    {
-      "name": "Onboarding Tools",
+      "name": "Guides",
       "url": "guides"
     },
     {
-      "name": "Onboarding APIs & SDKs",
+      "name": "APIs & SDKs Reference",
       "url": "api-reference"
     },
 
@@ -148,14 +140,22 @@
       ]
     },
     {
-      "group": "GETTING STARTED",
+"group": "CHAIN ABSTRACTION",
       "pages": [
-        "ua-guides/overview",
-        "ua-guides/supported-chains",
+        "guides/cha/overview",
+        "guides/cha/chains",
+        "guides/dashboard",
         {
           "group": "Quickstart",
           "pages": [
-            "ua-guides/quickstart/web"
+            "guides/cha/web-quickstart"
+          ]
+        },
+        {
+          "group": "How to",
+          "pages": [
+            "guides/cha/how-to/balance",
+            "guides/cha/how-to/transactions"
           ]
         }
 
@@ -163,18 +163,9 @@
       
     },
     {
-      "group": "CHAIN ABSTRACTION",
-      "pages": [
-        "ua-guides/universal-accounts",
-        "ua-guides/universal-liquidity"
-
-      ]
-    },
-    {
-      "group": "GETTING STARTED",
+      "group": "USER ONBOARDING",
       "pages": [
         "guides/overview",
-        "guides/dashboard",
         "guides/network-coverage",
         {
           "group": "Platform Coverage",
@@ -188,12 +179,7 @@
             "guides/integrations/platform/flutter",
             "guides/integrations/platform/react"
           ]
-        }
-      ]
-    },
-    {
-      "group": "USER ONBOARDING",
-      "pages": [
+        },
         {
           "group": "SDKs Overview",
           "pages": [
@@ -274,33 +260,33 @@
     {
       "group": "Universal Accounts APIs & SDKs",
       "pages": [
-        "ua-api-reference/introduction"
+        "api-reference/introduction"
       ]
     },
     {
       "group": "Universal Accounts SDK",
       "pages": [
-        "ua-api-reference/ua-sdk/introduction",
+        "api-reference/ua-sdk/introduction",
         {
           "group": "Universal Accouts SDK",
           "pages": [
-            "ua-api-reference/ua-sdk/desktop/web"
+            "api-reference/ua-sdk/desktop/web"
           ]
         },
-        "ua-api-reference/ua-sdk/faq"
+        "api-reference/ua-sdk/faq"
       ]
     },
     {
       "group": "Universal Accounts APIs",
       "pages": [
-        "ua-api-reference/ua-api/introduction",
+        "api-reference/ua-api/introduction",
         {
           "group": "APIs",
           "pages": [
-            "ua-api-reference/ua-api/getaccount"
+            "api-reference/ua-api/getaccount"
           ]
         },
-        "ua-api-reference/ua-api/faq"
+        "api-reference/ua-api/faq"
       ]
     },
     
