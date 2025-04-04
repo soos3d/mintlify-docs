@@ -50,21 +50,16 @@
   },
   "tabs": [
     {
-      "name": "Guides",
-      "url": "guides"
+      "name": "Universal Accounts",
+      "url": "universal-accounts"
     },
     {
-      "name": "APIs & SDKs Reference",
+      "name": "Onboarding SDKs",
       "url": "api-reference"
     },
-
     {
       "name": "Changelog",
       "url": "changelog"
-    },
-    {
-      "name": "Schedule a Demo",
-      "url": "https://calendly.com/particle-network/30min"
     }
   ],
   "anchors": [
@@ -142,20 +137,20 @@
     {
 "group": "CHAIN ABSTRACTION",
       "pages": [
-        "guides/cha/overview",
-        "guides/cha/chains",
-        "guides/dashboard",
+        "universal-accounts/cha/overview",
+        "universal-accounts/cha/chains",
+        "universal-accounts/dashboard",
         {
           "group": "Quickstart",
           "pages": [
-            "guides/cha/web-quickstart"
+            "universal-accounts/cha/web-quickstart"
           ]
         },
         {
           "group": "How to",
           "pages": [
-            "guides/cha/how-to/balance",
-            "guides/cha/how-to/transactions"
+            "universal-accounts/cha/how-to/balance",
+            "universal-accounts/cha/how-to/transactions"
           ]
         }
 
@@ -163,133 +158,126 @@
       
     },
     {
-      "group": "USER ONBOARDING",
-      "pages": [
-        "guides/overview",
-        "guides/network-coverage",
-        {
-          "group": "Platform Coverage",
-          "pages": [
-            "guides/integrations/platform/web",
-            "guides/integrations/platform/android",
-            "guides/integrations/platform/ios",
-            "guides/integrations/platform/unity",
-            "guides/integrations/platform/unreal",
-            "guides/integrations/platform/cocos",
-            "guides/integrations/platform/flutter",
-            "guides/integrations/platform/react"
-          ]
-        },
-        {
-          "group": "SDKs Overview",
-          "pages": [
-            "guides/wallet-as-a-service/waas/understanding-waas",
-            "guides/integrations/waas/connect",
-            "guides/integrations/waas/auth"
-          ]
-        },
-        {
-          "group": "Quickstarts",
-          "pages": [
-            "guides/wallet-as-a-service/waas/connect/web-quickstart",
-            "guides/wallet-as-a-service/waas/connect/ios-quickstart",
-            "guides/wallet-as-a-service/waas/connect/android-quickstart",
-            "guides/wallet-as-a-service/waas/connect/flutter-quickstart",
-            "guides/wallet-as-a-service/waas/connect/react-native-quickstart",
-            "guides/wallet-as-a-service/waas/auth/web-quickstart",
-            "guides/wallet-as-a-service/waas/auth/tg-quickstart",
-            "guides/wallet-as-a-service/waas/auth/ios-quickstart",
-            "guides/wallet-as-a-service/waas/auth/android-quickstart",
-            "guides/wallet-as-a-service/waas/auth/flutter-quickstart",
-            "guides/wallet-as-a-service/waas/auth/react-native-quickstart"
-          ]
-        },
-        {
-          "group": "Connection Kits",
-          "pages": [
-            "guides/wallet-as-a-service/connection-kits/rainbow",
-            "guides/wallet-as-a-service/connection-kits/web3modal",
-            "guides/wallet-as-a-service/connection-kits/web3-onboard"
-          ]
-        },
-        {
-          "group": "Configuration",
-          "pages": [
-            {
-              "group": "Appearance",
-              "pages": [
-                "guides/configuration/appearance/auth",
-                "guides/configuration/appearance/wallet"
-              ]
-            },
-            {
-              "group": "Authentication",
-              "pages": [
-                "guides/configuration/auth/jwt",
-                "guides/configuration/auth/social-prompt",
-                "guides/configuration/auth/session-duration",
-                "guides/configuration/auth/password"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "group": "ACCOUNT ABSTRACTION",
-      "pages": [
-        {
-          "group": "Quickstarts",
-          "pages": [
-            "guides/aa/web-aa",
-            "guides/aa/mobile-aa",
-            "guides/aa/bundler",
-            "guides/aa/paymaster"
-          ]
-        },
-        {
-          "group": "Product Overviews",
-          "pages": [
-            "guides/integrations/aa/bundler",
-            "guides/integrations/aa/paymaster",
-            "guides/integrations/aa/keys"
-          ]
-        }
-      ]
-    },
-    {
-      "group": "Universal Accounts APIs & SDKs",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Universal Accounts SDK",
-      "pages": [
-        "api-reference/ua-sdk/introduction",
-        {
-          "group": "Universal Accouts SDK",
-          "pages": [
-            "api-reference/ua-sdk/desktop/web"
-          ]
-        },
-        "api-reference/ua-sdk/faq"
-      ]
-    },
-    {
-      "group": "Universal Accounts APIs",
-      "pages": [
-        "api-reference/ua-api/introduction",
-        {
-          "group": "APIs",
-          "pages": [
-            "api-reference/ua-api/getaccount"
-          ]
-        },
-        "api-reference/ua-api/faq"
-      ]
-    },
+      "group": "APIs & SDK Reference",
+            "pages": [
+              "universal-accounts/ua-reference/overview",
+
+              {
+                "group": "SDK (Desktop)",
+                "pages": [
+                  "universal-accounts/ua-reference/desktop/web"
+                ]
+              },
+              {
+                "group": "APIs",
+                "pages": [
+                  "universal-accounts/ua-reference/apis/ua"
+                ]
+              },
+
+              "universal-accounts/ua-reference/faq"
+         
+              
+            ]
+            
+          },
     
+    
+          {
+            "group": "USER ONBOARDING",
+            "pages": [
+              "api-reference/guides/overview",
+              "api-reference/guides/network-coverage",
+              {
+                "group": "Platform Coverage",
+                "pages": [
+                  "api-reference/guides/integrations/platform/web",
+                  "api-reference/guides/integrations/platform/android",
+                  "api-reference/guides/integrations/platform/ios",
+                  "api-reference/guides/integrations/platform/unity",
+                  "api-reference/guides/integrations/platform/unreal",
+                  "api-reference/guides/integrations/platform/cocos",
+                  "api-reference/guides/integrations/platform/flutter",
+                  "api-reference/guides/integrations/platform/react"
+                ]
+              },
+              {
+                "group": "SDKs Overview",
+                "pages": [
+                  "api-reference/guides/wallet-as-a-service/waas/understanding-waas",
+                  "api-reference/guides/integrations/waas/connect",
+                  "api-reference/guides/integrations/waas/auth"
+                ]
+              },
+              {
+                "group": "Quickstarts",
+                "pages": [
+                  "api-reference/guides/wallet-as-a-service/waas/connect/web-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/connect/ios-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/connect/android-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/connect/flutter-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/connect/react-native-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/web-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/tg-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/ios-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/android-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/flutter-quickstart",
+                  "api-reference/guides/wallet-as-a-service/waas/auth/react-native-quickstart"
+                ]
+              },
+              {
+                "group": "Connection Kits",
+                "pages": [
+                  "api-reference/guides/wallet-as-a-service/connection-kits/rainbow",
+                  "api-reference/guides/wallet-as-a-service/connection-kits/web3modal",
+                  "api-reference/guides/wallet-as-a-service/connection-kits/web3-onboard"
+                ]
+              },
+              {
+                "group": "Configuration",
+                "pages": [
+                  {
+                    "group": "Appearance",
+                    "pages": [
+                      "api-reference/guides/configuration/appearance/auth",
+                      "api-reference/guides/configuration/appearance/wallet"
+                    ]
+                  },
+                  {
+                    "group": "Authentication",
+                    "pages": [
+                      "api-reference/guides/configuration/auth/jwt",
+                      "api-reference/guides/configuration/auth/social-prompt",
+                      "api-reference/guides/configuration/auth/session-duration",
+                      "api-reference/guides/configuration/auth/password"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "ACCOUNT ABSTRACTION",
+            "pages": [
+              {
+                "group": "Quickstarts",
+                "pages": [
+                  "api-reference/guides/aa/web-aa",
+                  "api-reference/guides/aa/mobile-aa",
+                  "api-reference/guides/aa/bundler",
+                  "api-reference/guides/aa/paymaster"
+                ]
+              },
+              {
+                "group": "Product Overviews",
+                "pages": [
+                  "api-reference/guides/integrations/aa/bundler",
+                  "api-reference/guides/integrations/aa/paymaster",
+                  "api-reference/guides/integrations/aa/keys"
+                ]
+              }
+            ]
+          },
     {
       "group": "PARTICLE CONNECT",
       "pages": [
