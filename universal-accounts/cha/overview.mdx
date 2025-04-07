@@ -3,12 +3,38 @@ title: "Introduction"
 description: "Learn about the Universal Accounts SDK—your entry point to native chain abstraction and unified user identity."
 ---
 
-
 ![Universal Accounts within UniversalX](/images/v22.gif)
 
-### Quickstart: Universal Accounts 
+## What Are Universal Accounts?
 
-The **Quickstart: Universal Accounts** section offers guides to implementing **native chain abstraction** using Particle Network’s Universal Accounts SDK. This SDK introduces a unified, cross-chain account system that simplifies multi-chain identity and asset management.
+**Universal Accounts** are smart accounts that work across multiple chains and ecosystems, including **EVM**, **BTC**, and **Solana**:
+- A **single address and balance** across all [supported chains](/guides/cha/chains)
+- **Gas abstraction** (pay with any token from any chain)
+- **Cross-chain liquidity**, handled automatically
+
+By using Universal Accounts, developers can abstract away the fragmented UX of multi-chain Web3 and give their users a seamless, chain-agnostic experience.
+
+---
+
+## Integration Flow
+
+The **Universal Account SDK** is designed for fast, minimal lift integrations. Under the hood, it wraps any existing provider (e.g., Social Logins, MetaMask, WalletConnect) and routes all transactions through the user's Universal Account.
+
+The general flow:
+1. **Configure** the account using a single config object.
+2. **Wrap** the existing provider using the SDK’s wrapper.
+
+Once integrated, all transactions, balance reads, and gas handling automatically use the Universal Account—**no additional code for bridging or gas logic required**.
+
+<Note>
+Universal Accounts are smart contract accounts. Existing assets in a user's current wallet are not automatically included. Users can transfer assets into their Universal Account from any supported chain via in-app flows.
+</Note>
+
+---
+
+## Quickstart: Universal Accounts
+
+Get started quickly by learning the basics of Universal Accounts and implementing the SDK.
 
 <CardGroup cols={3}>
   <Card title="Introduction to Universal Accounts" icon="user" href="/intro/universal-accounts">
@@ -18,13 +44,15 @@ The **Quickstart: Universal Accounts** section offers guides to implementing **n
     Step-by-step setup guide for integrating the UA SDK into your application.
   </Card>
   <Card title="UA SDK Reference" icon="code" href="/guides/universal-accounts/sdk-reference">
-    ADK and API reference for the Universal Accounts SDK.
+    SDK and API reference for the Universal Accounts SDK.
   </Card>
 </CardGroup>
 
-### How to guides
+---
 
-Learn how to implement specific features of **Universal Accounts** in your application.
+## How-To Guides
+
+Learn how to implement specific Universal Account features in your app.
 
 <CardGroup cols={1}>
   <Card title="How to Get Unified Balance" icon="dollar-sign" href="/guides/cha/how-to/balance">
@@ -35,9 +63,11 @@ Learn how to implement specific features of **Universal Accounts** in your appli
   </Card>
 </CardGroup>
 
-### Understanding Chain Abstraction
+---
 
-Learn what **Chain Abstraction** is and how it's powered by **Universal Accounts**.
+## Understanding Chain Abstraction
+
+Explore the conceptual foundations behind Universal Accounts and how they power chain abstraction.
 
 <CardGroup cols={1}>
   <Card title="What is Chain Abstraction?" icon="layer-group" href="/intro/what-is-cha">
