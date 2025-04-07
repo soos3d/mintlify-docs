@@ -7,34 +7,37 @@ description: "Learn about the Universal Accounts SDK—your entry point to nativ
 
 ## What Are Universal Accounts?
 
-**Universal Accounts** are smart accounts that work across multiple chains and ecosystems, including **EVM**, **BTC**, and **Solana**:
+**Universal Accounts** are smart accounts that work across multiple chains and ecosystems, including **EVM** chains and **Solana**:
 - A **single address and balance** across all [supported chains](/guides/cha/chains)
 - **Gas abstraction** (pay with any token from any chain)
-- **Cross-chain liquidity**, handled automatically
+- **Automatic bridging**, allowing users to spend assets held anywhere, even from multiple origin chains
 
-By using Universal Accounts, developers can abstract away the fragmented UX of multi-chain Web3 and give their users a seamless, chain-agnostic experience.
+By using Universal Accounts, you can onboard and accept users with funds on any number of chains, usable natively within your app (regardless of where it's deployed) with one signature; effectively abstracting away the multi-chain experience for your userbase.
 
 ---
 
 ## Integration Flow
 
-The **Universal Account SDK** is designed for fast, minimal lift integrations. Under the hood, it wraps any existing provider (e.g., Social Logins, MetaMask, WalletConnect) and routes all transactions through the user's Universal Account.
+The **Universal Account SDK** is designed for fast, minimal lift integrations with common wallet connection mechanisms. 
+
+Under the hood, it wraps any existing EIP-1193 wallet provider object (e.g., Social Logins, MetaMask, WalletConnect) and routes all transactions through the user's Universal Account (an ERC-4337 smart account).
 
 The general flow:
 1. **Configure** the account using a single config object.
-2. **Wrap** the existing provider using the SDK’s wrapper.
+2. **Wrap** your existing provider object (from RainbowKit or any other connection mechanism) using the SDK.
+3. Push transactions as usual; no other codebase changes needed. A users balance will be treated as the collective of the chains they hold funds on.
 
 Once integrated, all transactions, balance reads, and gas handling automatically use the Universal Account—**no additional code for bridging or gas logic required**.
 
 <Note>
-Universal Accounts are smart contract accounts. Existing assets in a user's current wallet are not automatically included. Users can transfer assets into their Universal Account from any supported chain via in-app flows.
+Universal Accounts are smart contract accounts. Existing assets in a user's current wallet are not automatically included. Users can transfer assets into their Universal Account from any supported chain via in-app flows; you may also make Universal Accounts an optional toggle within your app if you prefer to maintain EOAs as the default account mechanism.
 </Note>
 
 ---
 
 ## Quickstart: Universal Accounts
 
-Get started quickly by learning the basics of Universal Accounts and implementing the SDK.
+Get a live integration ready in under 5 minutes by learning the basics of Universal Accounts and implementing the SDK.
 
 <CardGroup cols={3}>
   <Card title="Introduction to Universal Accounts" icon="user" href="/intro/universal-accounts">
