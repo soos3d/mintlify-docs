@@ -216,28 +216,7 @@
               }
             ]
           },
-          {
-            "group": "ACCOUNT ABSTRACTION",
-            "pages": [
-              {
-                "group": "Quickstarts",
-                "pages": [
-                  "api-reference/guides/aa/web-aa",
-                  "api-reference/guides/aa/mobile-aa",
-                  "api-reference/guides/aa/bundler",
-                  "api-reference/guides/aa/paymaster"
-                ]
-              },
-              {
-                "group": "Product Overviews",
-                "pages": [
-                  "api-reference/guides/integrations/aa/bundler",
-                  "api-reference/guides/integrations/aa/paymaster",
-                  "api-reference/guides/integrations/aa/keys"
-                ]
-              }
-            ]
-          },
+          
     {
       "group": "PARTICLE CONNECT",
       "pages": [
@@ -322,33 +301,18 @@
       ]
     },
     {
-      "group": "PARTICLE WALLET",
-      "pages": [
-        "api-reference/wallet/introduction",
-        "api-reference/wallet/on-ramp",
-        {
-          "group": "SDKs (Desktop)",
-          "pages": [
-            "api-reference/wallet/desktop/web"
-          ]
-        },
-        {
-          "group": "SDKs (Mobile)",
-          "pages": [
-            "api-reference/wallet/mobile/android",
-            "api-reference/wallet/mobile/ios",
-            "api-reference/wallet/mobile/unity",
-            "api-reference/wallet/mobile/flutter",
-            "api-reference/wallet/mobile/react"
-          ]
-        },
-        "api-reference/wallet/faq"
-      ]
-    },
-    {
       "group": "ACCOUNT ABSTRACTION",
       "pages": [
         "api-reference/aa/introduction",
+        {
+          "group": "Quickstarts",
+          "pages": [
+            "api-reference/guides/aa/web-aa",
+            "api-reference/guides/aa/mobile-aa",
+            "api-reference/guides/aa/bundler",
+            "api-reference/guides/aa/paymaster"
+          ]
+        },
         {
           "group": "SDKs (Desktop)",
           "pages": [
@@ -396,6 +360,31 @@
         "api-reference/aa/faq"
       ]
     },
+    {
+      "group": "PARTICLE WALLET",
+      "pages": [
+        "api-reference/wallet/introduction",
+        "api-reference/wallet/on-ramp",
+        {
+          "group": "SDKs (Desktop)",
+          "pages": [
+            "api-reference/wallet/desktop/web"
+          ]
+        },
+        {
+          "group": "SDKs (Mobile)",
+          "pages": [
+            "api-reference/wallet/mobile/android",
+            "api-reference/wallet/mobile/ios",
+            "api-reference/wallet/mobile/unity",
+            "api-reference/wallet/mobile/flutter",
+            "api-reference/wallet/mobile/react"
+          ]
+        },
+        "api-reference/wallet/faq"
+      ]
+    },
+    
     {
       "group": "BTC CONNECT",
       "pages": [
