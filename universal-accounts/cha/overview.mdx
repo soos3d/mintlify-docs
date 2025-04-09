@@ -18,6 +18,17 @@ By using Universal Accounts, you can onboard and accept users with funds on any 
 
 ## Integration Flow
 
+<img
+  className="block dark:hidden"
+  src="./images/flow.png"
+  alt="Chain Abstraction scheme"
+/>
+<img
+  className="hidden dark:block"
+  src="./images/flow.png"
+  alt="Chain Abstraction scheme"
+/>
+
 The **Universal Account SDK** is designed for fast, minimal lift integrations with common wallet connection mechanisms. 
 
 Under the hood, it wraps any existing EIP-1193 wallet provider object (e.g., Social Logins, MetaMask, WalletConnect) and routes all transactions through the user's Universal Account (an ERC-4337 smart account).
@@ -63,6 +74,12 @@ Learn how to implement specific Universal Account features in your app.
   </Card>
   <Card title="How to Send Cross-Chain Transactions" icon="paper-plane-top" href="/guides/cha/how-to/transactions">
     Learn how to send transactions across different blockchain networks using Universal Accounts.
+  </Card>
+  <Card title="How to display the assets breakdown" icon="paper-plane-top" href="/guides/cha/how-to/balance-breakdown">
+    Learn how to display the assets breakdown of a Universal Account.
+  </Card>
+  <Card title="How to toggle Universal Accounts on and off" icon="paper-plane-top" href="/guides/cha/how-to/toggle">
+    Implement a system to toggle between using a Universal Account and a regular EOA.
   </Card>
 </CardGroup>
 
