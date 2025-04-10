@@ -1,11 +1,15 @@
 ---
-title: "Universal Gas"
+title: "Introduction to Universal Gas"
 description: "Pay for transaction fees using any token from any source chain."
 ---
 
-Particle Network's Universal Gas, otherwise known as gas abstraction, exists to solve the fragmentation and rigidity of gas tokens in transactions across blockchains. Universal Gas allows users to spend any token to pay for gas fees, and can be accessed by interacting with [Universal Accounts](/intro/universal-accounts).
+**Universal Gas** lets users pay transaction fees using **any token**, even if it’s from a different blockchain than the one they’re transacting on.
 
-Leveraging a Universal Gas, users can pay the fees on a transaction using any token. from any source chain (for example, paying fees on Arbitrum using USDT from Base). Traditionally, transactions require fees to be paid in the native token of the network(s) you're interacting with; however with Universal Gas, the denomination in which users pay these fees is flexibilized across chains.
+Normally, blockchains require users to pay gas fees in the network’s native token (e.g. ETH on Ethereum, BNB on BNB Chain). This creates friction—users need to manage multiple native tokens across chains just to use dApps.
+
+With Universal Gas, this requirement is abstracted away. Through [Universal Accounts](/intro/universal-accounts) and the [Universal SDK](/universal-accounts/ua-reference/overview), users can pay gas with whatever token they already hold, even if it’s from another chain. For example, they can pay for a transaction on Arbitrum using USDT from Base.
+
+This is all handled automatically by Particle Network’s infrastructure, so users never need to think about swapping or bridging tokens just to cover fees.
 
 <img
   className="block dark:hidden"
@@ -22,7 +26,7 @@ Leveraging a Universal Gas, users can pay the fees on a transaction using any to
 
 ## Using Universal Gas
 
-When transactions are executed through a Universal Account, Particle Network's dApp-embedded modal— enabled through Particle Network's Universal SDK— will prompt the user to choose the token they'd like to pay gas fees with. From this point, users can choose between multiple tokens, either coming from the same chain the transaction is executed on or from external chains, automatically consumed through Particle Network's native Paymaster.
+When transactions are executed through a Universal Account, Particle Network's dApp-embedded modal— enabled through the [Universal SDK](/universal-accounts/ua-reference/overview)— will prompt the user to choose the token they'd like to pay gas fees with. From this point, users can choose between multiple tokens, either coming from the same chain the transaction is executed on or from external chains, automatically consumed through Particle Network's native Paymaster.
 
 All gas payments are eventually settled in the source and target chains, with a portion of the fee automatically routed and converted into PARTI to settle the transaction on Particle Network. As a result, end-users have the ability to pay transaction fees in a way that removes the cognitive requirement of bridging or keeping track of cross-chain balances, maintaining a pool of native tokens, etc.
 

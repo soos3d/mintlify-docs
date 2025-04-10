@@ -1,15 +1,17 @@
 ---
-title: "Universal Accounts"
+title: "Introduction to Universal Accounts"
 description: "One account, one balance, any chain."
 ---
 
 ___
 
-Particle Network’s Universal Accounts play a crucial role within Particle Network’s implementation of chain abstraction, providing users with a single address, balance, and interaction point across the multi-chain Web3 ecosystem.
+**Universal Accounts** are the Chain Abstraction infrastructure built by Particle that give users one account to use across all supported blockchains—EVM and non-EVM—with a **single balance**, **address**, and **interface**.
 
-Users leveraging a Universal Account maintain one balance and account state across every blockchain. Particle’s Universal Accounts leverage [Universal Liquidity](/intro/universal-liquidity) to automatically execute atomic cross-chain transactions and pool funds from a user's balance across chains to meet the conditions of a given operation. This creates a unified UX, agnostic to any specific blockchain.
+Instead of managing different wallets, tokens, and apps per chain, users interact through a Universal Account as if the entire Web3 ecosystem were one network.
 
-By using a Universal Account, user’s not only unify their interface with the EVM and non-EVM ecosystem, but have the ability to deposit and use funds on any blockchain– represented and used as if it existed on a single chain.
+This is possible because Particle Network handles all the complexity behind the scenes—automatically routing liquidity, bridging assets, and managing cross-chain logic using [Universal Liquidity](/intro/universal-liquidity).
+
+For developers, Universal Accounts are smart contract-based accounts that integrate easily into dApps using the [Universal SDK](/universal-accounts/ua-reference/overview). They're compatible with both social logins and wallet connections, and support gasless, cross-chain operations out of the box.
 
 <Frame caption="User flow of Particle Network's Universal Accounts.">
 <img

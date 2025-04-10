@@ -1,25 +1,25 @@
 ---
-title: "Universal Liquidity"
+title: "Introduction to Universal Liquidity"
 description: "Unifying users' assets across all chains."
 ---
 
-Particle Network’s Universal Liquidity functionality acts as the underlying layer enabling seamless, atomic cross-chain interactions, enabling the unification of balances within [Universal Accounts](/intro/universal-accounts).
+**Universal Liquidity** is the mechanism that powers cross-chain transactions in [Universal Accounts](/intro/universal-accounts). It allows users to spend or transfer assets across any chain—automatically and atomically—without needing to manually bridge, swap, or move tokens between networks.
 
-**Furthermore, Universal Liquidity handles the atomic movement of funds across chains within the frame of a relevant cross-chain transaction requiring liquidity from external sources.**
+This functionality is built into **Particle's Universal SDK**, enabling developers to give users a single, unified balance across all supported chains. The SDK handles everything: sourcing funds, executing cross-chain logic, and coordinating settlement between networks.
 
-For example, in transactions done on chains in which a user has no funds, Universal Liquidity will automatically pull funds from the user’s balance on one or more chains where the required liquidity exists. These transactions are paid for using any token, all while coordinated and settled through Particle Network.
+For example, if a user wants to transact on a chain where they don’t hold funds, **Universal Liquidity** automatically pulls the required tokens from their balances on other chains. The process is invisible to the user, and they can pay gas in **any token**, on any chain.
 
-Through the implementation of Universal Liquidity, users who leverage applications across chains have an experience akin to that of interacting with a single chain. This eliminates the need to manually access and use bridges, as the liquidity needed for a given action is automatically sourced from balances a user’s [Universal Account](/landing/modular-l1/universal-accounts) holds on other chains, with the automatic execution of any swaps the transaction requires.
+This makes using a multi-chain dApp feel like using a single-chain app—no bridges, no manual steps, just one smooth experience.
 
 <Frame caption="Example of cross-chain transaction execution with Particle Network.">
 <img
   className="block dark:hidden"
-  src="/landing/modular-l1/images/universal-liquidity.png"
+  src="/intro/images/universal-liquidity.png"
   alt="Universal Liquidity"
 />
 <img
   className="hidden dark:block"
-  src="/landing/modular-l1/images/universal-liquidity.png"
+  src="/intro/images/universal-liquidity.png"
   alt="Universal Liquidity"
 />
 </Frame>
