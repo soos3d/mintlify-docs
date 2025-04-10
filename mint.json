@@ -93,24 +93,6 @@
       ]
     },
     {
-      "group": "SOCIAL LOGINS",
-      "pages": [
-        "intro/wallet-abstraction/waas/overview",
-        {
-          "group": "Account Abstraction",
-          "pages": [
-            "intro/wallet-abstraction/waas/bundler",
-            "intro/wallet-abstraction/waas/omni-paymaster",
-            "intro/wallet-abstraction/btc-connect"
-          ]
-        } ,
-        "intro/wallet-abstraction/waas/differentiators",
-        "intro/wallet-abstraction/waas/mpc-tss"
-      ]
-      
-    },
-
-    {
       "group": "MORE RESOURCES",
       "pages": [
         "intro/more/audits",
@@ -180,6 +162,7 @@
               "api-reference/guides/overview",
               "api-reference/guides/network-coverage",
               "api-reference/guides/dashboard",
+              "api-reference/wallet-abstraction/waas/mpc-tss",
               {
                 "group": "Platform Coverage",
                 "pages": [
@@ -329,6 +312,14 @@
             "api-reference/aa/sdks/mobile/react"
           ]
         },
+        {
+          "group": "Architecture",
+          "pages": [
+            "api-reference/wallet-abstraction/waas/bundler",
+            "api-reference/wallet-abstraction/waas/omni-paymaster",
+            "api-reference/wallet-abstraction/btc-connect"
+          ]
+        } ,
         {
           "group": "Account Abstraction RPC",
           "pages": [
