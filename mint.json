@@ -50,7 +50,7 @@
       "url": "universal-accounts"
     },
     {
-      "name": "Onboarding",
+      "name": "Social Logins",
       "url": "api-reference"
     },
     {
@@ -93,7 +93,7 @@
       ]
     },
     {
-      "group": "USER ONBOARDING",
+      "group": "SOCIAL LOGINS",
       "pages": [
         "intro/wallet-abstraction/waas/overview",
         {
