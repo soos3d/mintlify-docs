@@ -141,12 +141,6 @@
                   "universal-accounts/ua-reference/desktop/web"
                 ]
               },
-              {
-                "group": "APIs",
-                "pages": [
-                  "universal-accounts/ua-reference/apis/ua"
-                ]
-              },
 
               "universal-accounts/ua-reference/faq"
          
